@@ -84,11 +84,16 @@ class DocumentController: UIViewController {
     @IBAction func saveToiCloud(_ sender: Any) {
         do {
             let fm = FileManager.default
-            let driveURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents")
-            try? fm.createDirectory(at: driveURL!, withIntermediateDirectories: false, attributes: nil)
-            let url = (driveURL?.appendingPathComponent((viewModel?.item.name)!))!
-            try viewModel?.fileData?.write(to: url)
-            showAlert(message: "Uploaded successfully, please check your iCloud store")
+            if let driveURL = FileManager.default.url(forUbiquityContainerIdentifier: nil)?.appendingPathComponent("Documents") {
+                try? fm.createDirectory(at: driveURL, withIntermediateDirectories: false, attributes: nil)
+                if let fileName = viewModel?.item.name {
+                   let url = driveURL.appendingPathComponent(fileName)
+                   try viewModel?.fileData?.write(to: url)
+                   showAlert(message: "Uploaded successfully, please check your iCloud store")
+                }
+            } else {
+                showAlert(message: "Please Sign in to your iPhone")
+            }
         } catch {
             showAlert(message: error.localizedDescription)
         }
