@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import SwiftyDropbox
-//import OneDriveSDK
+import OneDriveSDK
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         clearKeychainIfWillUnistall()
         FirebaseApp.configure()
         DropboxClientsManager.setupWithAppKey("y30emrqx9qw3omw")
-   //     ODClient.setActiveDirectoryAppId("bca59b63-67b3-4b67-9f94-f4ca7153b4a3", redirectURL: "msauth.com.upload://auth")
+        ODClient.setActiveDirectoryAppId("bca59b63-67b3-4b67-9f94-f4ca7153b4a3", redirectURL: "msauth.com.upload://auth")
         return true
     }
 

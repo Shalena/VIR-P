@@ -12,7 +12,7 @@ import GoogleSignIn
 import GoogleAPIClientForREST
 import GTMSessionFetcher
 import Firebase
-//import OneDriveSDK
+import OneDriveSDK
 
 class DocumentController: UIViewController {
     
@@ -24,7 +24,7 @@ class DocumentController: UIViewController {
     
     let googleDriveService = GTLRDriveService()
     var googleUser: GIDGoogleUser?
-    //var oneDriveClient: ODClient?
+    var oneDriveClient: ODClient?
     var uploadFolderID: String?
     
     override func viewDidLoad() {
@@ -100,14 +100,14 @@ class DocumentController: UIViewController {
     }
     
     @IBAction func saveToOneDrive(_ sender: Any) {
-//    ODClient.setParentAuthController(self)
-//    ODClient.authenticatedClient(completion: { (odclient, error) in
-//          if odclient != nil {
-//            self.oneDriveClient = odclient
-//          } else if error != nil {
-//            self.showAlert(message: error!.localizedDescription)
-//          }
-//    })
+    ODClient.setParentAuthController(self)
+    ODClient.authenticatedClient(completion: { (odclient, error) in
+          if odclient != nil {
+            self.oneDriveClient = odclient
+          } else if error != nil {
+            self.showAlert(message: error!.localizedDescription)
+          }
+    })
 }
     
     private func populateFolderID() {

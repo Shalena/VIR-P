@@ -21,7 +21,6 @@
 		81610B7726EBF5F5001C7D78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81610B7626EBF5F5001C7D78 /* Main.storyboard */; };
 		81610B8C26EBFDC0001C7D78 /* GoogleService-Info.plist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81610B8B26EBFDC0001C7D78 /* GoogleService-Info.plist.plist */; };
 		81610C4626F76792001C7D78 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81610C4526F76791001C7D78 /* GoogleService-Info.plist */; };
-		81610C5F26F76D7A001C7D78 /* snoopy.png in Resources */ = {isa = PBXBuildFile; fileRef = 81610C5E26F76D7A001C7D78 /* snoopy.png */; };
 		81A0315E27446DD90070CAB0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A0315D27446DD80070CAB0 /* LoginViewController.swift */; };
 		81A0316027446DEC0070CAB0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A0315F27446DEC0070CAB0 /* LoginViewModel.swift */; };
 		81A0316227446E080070CAB0 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81A0316127446E080070CAB0 /* Login.storyboard */; };
@@ -80,7 +79,6 @@
 		81610B7626EBF5F5001C7D78 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		81610B8B26EBFDC0001C7D78 /* GoogleService-Info.plist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist.plist"; sourceTree = "<group>"; };
 		81610C4526F76791001C7D78 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		81610C5E26F76D7A001C7D78 /* snoopy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snoopy.png; sourceTree = "<group>"; };
 		81711DFC276A349E002CE927 /* ADAL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ADAL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81A0315D27446DD80070CAB0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		81A0315F27446DEC0070CAB0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				81A0316A274556A40070CAB0 /* Models */,
 				81A0315C27446DAA0070CAB0 /* Login */,
 				81A0316327450FAF0070CAB0 /* Download */,
-				81610C5E26F76D7A001C7D78 /* snoopy.png */,
 				81610B8B26EBFDC0001C7D78 /* GoogleService-Info.plist.plist */,
 				81610B7626EBF5F5001C7D78 /* Main.storyboard */,
 				81610B3026EB7631001C7D78 /* AppDelegate.swift */,
@@ -385,7 +382,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				81610B7726EBF5F5001C7D78 /* Main.storyboard in Resources */,
-				81610C5F26F76D7A001C7D78 /* snoopy.png in Resources */,
 				81610B8C26EBFDC0001C7D78 /* GoogleService-Info.plist.plist in Resources */,
 				81A0316527450FE80070CAB0 /* Download.storyboard in Resources */,
 				81610C4626F76792001C7D78 /* GoogleService-Info.plist in Resources */,
