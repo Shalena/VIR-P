@@ -10,6 +10,7 @@ import Firebase
 import GoogleSignIn
 import SwiftyDropbox
 import OneDriveSDK
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         DropboxClientsManager.setupWithAppKey("y30emrqx9qw3omw")
         ODClient.setActiveDirectoryAppId("bca59b63-67b3-4b67-9f94-f4ca7153b4a3", redirectURL: "msauth.com.upload://auth")
+        registerForPushNotifications()
         return true
     }
 
@@ -61,6 +63,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             KeychainHelper.shared.delete(service: "access-token", account: appNameAccount)
             UserDefaults.standard.set(true, forKey: "alreadyInstalled")
         }
+    }
+    
+    func registerForPushNotifications() {
+      UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+          print("Permission granted: \(granted)")
+          guard granted else { return }
+          self.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+      UNUserNotificationCenter.current().getNotificationSettings { settings in
+        print("Notification settings: \(settings)")
+          guard settings.authorizationStatus == .authorized else { return }
+          DispatchQueue.main.async {
+            UIApplication.shared.registerForRemoteNotifications()
+          }
+      }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+      let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+      let token = tokenParts.joined()
+      print("Device Token: \(token)")
+        
+    }
+    
+    func application(
+      _ application: UIApplication,
+      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+      fetchCompletionHandler completionHandler:
+      @escaping (UIBackgroundFetchResult) -> Void) {
+//      guard let aps = userInfo["aps"] as? [String: AnyObject] else {
+//        completionHandler(.failed)
+//        return
+//      }
+    }
+
+    func application(
+      _ application: UIApplication,
+      didFailToRegisterForRemoteNotificationsWithError error: Error
+    ) {
+      print("Failed to register: \(error)")
     }
 }
 
