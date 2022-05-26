@@ -16,6 +16,15 @@ extension UIViewController {
     alertController.addAction(OKAction)
     self.present(alertController, animated: true, completion: nil)
   }
+    
+    func twoOptionCancelAlert(message: String, title: String = "", actionTitle: String) {
+      let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      let action = UIAlertAction(title: actionTitle, style: .default, handler: nil)
+      let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+      alertController.addAction(cancelAction)
+      alertController.addAction(action)        
+      self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 protocol BaseControllerDelegate: class where Self: UIViewController {

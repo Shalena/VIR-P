@@ -23,4 +23,8 @@ class DownloadItemCell: UITableViewCell {
             title.text = text
         }
     }
+    
+    func markAsDowloaded() {
+        title.textColor = .gray
+    }
 }

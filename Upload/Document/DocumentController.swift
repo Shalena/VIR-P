@@ -57,6 +57,7 @@ class DocumentController: UIViewController {
             .response { [self] response, error in
                 if response != nil {
                     self.showAlert(message: "Uploaded successfully, please check your Dropbox")
+                  //  self.twoOptionCancelAlert(message: "Do you want to save Dropbox as preffered Cloud Store?", actionTitle: "Save")
                 } else if let error = error {
                     self.showAlert(message: error.description)
                 }
