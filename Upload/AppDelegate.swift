@@ -13,11 +13,10 @@ import OneDriveSDK
 import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UNUserNotificationCenter.current().delegate = self
         clearKeychainIfWillUnistall()
         FirebaseApp.configure()
         DropboxClientsManager.setupWithAppKey("y30emrqx9qw3omw")
@@ -68,7 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func registerForPushNotifications() {
       UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
           print("Permission granted: \(granted)")
-          guard granted else { return }
+          guard granted else {
+              return
+          }
           self.getNotificationSettings()
         }
     }
@@ -85,27 +86,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
       let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-      let token = tokenParts.joined()
-      print("Device Token: \(token)")
-        
+      let newtoken = tokenParts.joined()
+      print("Fresh Device Token: \(newtoken)")
+        if let data = KeychainHelper.shared.read(service: "push-token", account: appNameAccount),
+           let oldtoken = String(data: data, encoding: .utf8) {
+           print("Old Device Token: \(oldtoken)")            
+        }
+      let newData = Data(newtoken.utf8)
+        KeychainHelper.shared.delete(service: "push-token", account: appNameAccount)
+      KeychainHelper.shared.save(newData, service: "push-token", account: appNameAccount)
     }
     
-    func application(
-      _ application: UIApplication,
-      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-      fetchCompletionHandler completionHandler:
-      @escaping (UIBackgroundFetchResult) -> Void) {
+  //  func application(
+//      _ application: UIApplication,
+//      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+//      fetchCompletionHandler completionHandler:
+//      @escaping (UIBackgroundFetchResult) -> Void) {
 //      guard let aps = userInfo["aps"] as? [String: AnyObject] else {
 //        completionHandler(.failed)
+//
 //        return
 //      }
-    }
-
+//    }
+    
     func application(
       _ application: UIApplication,
       didFailToRegisterForRemoteNotificationsWithError error: Error
     ) {
       print("Failed to register: \(error)")
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,  willPresent notification: UNNotification, withCompletionHandler   completionHandler: @escaping (_ options:   UNNotificationPresentationOptions) -> Void) {
+        print("Handle push from foreground")
+        // custom code to handle push while app is in the foreground
+        print("\(notification.request.content.userInfo)")
+        
+     }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("Handle push from background or closed")
+        // if you set a member variable in didReceiveRemoteNotification, you  will know if this is from closed or background
+        print("\(response.notification.request.content.userInfo)")
+        let userInfo = response.notification.request.content.userInfo
+        guard let aps = userInfo["aps"] as? [String: AnyObject] else {
+            return
+        }
     }
 }
 
