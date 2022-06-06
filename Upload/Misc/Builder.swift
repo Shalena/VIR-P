@@ -25,4 +25,11 @@ final class Builder {
         controller.modalPresentationStyle = .fullScreen
         return controller
     }
+    
+    func buildSettings() -> UIViewController {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+        controller.modalPresentationStyle = .fullScreen
+        return controller
+    }
 }

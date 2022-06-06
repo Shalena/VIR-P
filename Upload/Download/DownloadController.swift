@@ -18,9 +18,11 @@ class DownloadController: UIViewController {
         viewModel.downloadItems()
     }
     
-    @IBAction func logOut(_ sender: Any) {
-        dismiss(animated: true)
+    @IBAction func settingsPressed(_ sender: Any) {
+        let settingsController = Builder.shared.buildSettings()
+        show(settingsController, sender: self)
     }
+    
 }
 
 
@@ -51,6 +53,7 @@ extension DownloadController: UITableViewDelegate, UITableViewDataSource {
         let controller = storyboard.instantiateViewController(withIdentifier: "DocumentController") as! DocumentController
         let viewModel = DocumentViewModel(item: item)
         controller.viewModel = viewModel
+        controller.modalPresentationStyle = .fullScreen
         present(controller, animated: true, completion: nil)
     }
 }

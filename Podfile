@@ -9,7 +9,7 @@ target 'Upload' do
   pod 'GoogleAPIClientForREST/Drive', '~> 1.3.7'
   pod 'Firebase/Analytics'
   pod 'SwiftyDropbox'
-  #pod 'OneDriveSDK'
+  pod 'OneDriveSDK'
 
   
   target 'UploadTests' do

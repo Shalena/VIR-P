@@ -7,6 +7,8 @@
 
 import Foundation
 
+let fakeDeviceToken = "0000-000-000-00000-00000"
+
 typealias LoginHandler = (Result<String, Error>) -> Void
 
 class LoginViewModel: NSObject {
@@ -15,14 +17,16 @@ class LoginViewModel: NSObject {
         let session = URLSession.shared
         let url = URL(string: "https://vir-p.com/api/login")!
         let deviceId = UUID().uuidString
-        var deviceToken: String?
+        var deviceToken = fakeDeviceToken
         if let data = KeychainHelper.shared.read(service: "push-token", account: appNameAccount), let pushToken = String(data: data, encoding: .utf8) {
             deviceToken = pushToken
         }
         let parameters = ["email": email,
                           "password": password,
                           "device_id": deviceId,
-                          "device_token": deviceToken
+                          "device_token": deviceToken,
+                          "os": "iOS",
+                          "production": "false"
         ]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
