@@ -14,7 +14,9 @@ class DownloadController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh(_:)), name: Notification.Name("newPush"), object: nil)
         viewModel.delegate = self
+        createSpinnerView()
         viewModel.downloadItems()
     }
     
@@ -23,6 +25,10 @@ class DownloadController: UIViewController {
         show(settingsController, sender: self)
     }
     
+    @objc func refresh(_ notification: Notification) {
+        createSpinnerView()
+        viewModel.downloadItems()
+    }    
 }
 
 

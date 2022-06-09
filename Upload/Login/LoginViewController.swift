@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginPressed(_ sender: Any) {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
+        createSpinnerView()
         viewModel.login(email: email, password: password) {[weak self] result in
             switch result {
             case .success(let accessToken):

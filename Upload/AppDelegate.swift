@@ -97,17 +97,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
       KeychainHelper.shared.save(newData, service: "push-token", account: appNameAccount)
     }
     
-  //  func application(
-//      _ application: UIApplication,
-//      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-//      fetchCompletionHandler completionHandler:
-//      @escaping (UIBackgroundFetchResult) -> Void) {
-//      guard let aps = userInfo["aps"] as? [String: AnyObject] else {
-//        completionHandler(.failed)
-//
-//        return
-//      }
-//    }
+    func application(
+      _ application: UIApplication,
+      didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+      fetchCompletionHandler completionHandler:
+      @escaping (UIBackgroundFetchResult) -> Void) {
+      guard let aps = userInfo["aps"] as? [String: AnyObject] else {
+        completionHandler(.failed)
+
+        return
+      }
+    }
     
     func application(
       _ application: UIApplication,
@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print("Handle push from foreground")
         // custom code to handle push while app is in the foreground
         print("\(notification.request.content.userInfo)")
-        
+        NotificationCenter.default.post(Notification(name: Notification.Name("newPush")))
      }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -131,6 +131,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         guard let aps = userInfo["aps"] as? [String: AnyObject] else {
             return
         }
+        print(aps)
+        NotificationCenter.default.post(Notification(name: Notification.Name("newPush")))
     }
 }
 
