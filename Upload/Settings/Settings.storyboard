@@ -17,30 +17,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="1tW-Ca-jdZ">
-                                <rect key="frame" x="105" y="347" width="204" height="212"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1tW-Ca-jdZ">
+                                <rect key="frame" x="10" y="408" width="394" height="90.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current push token to test:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cc-pL-iU5">
-                                        <rect key="frame" x="0.0" y="0.0" width="204" height="20.5"/>
+                                        <rect key="frame" x="95" y="0.0" width="204" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlk-vh-YmM">
-                                        <rect key="frame" x="81.5" y="90.5" width="41.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wlk-vh-YmM">
+                                        <rect key="frame" x="172" y="40.5" width="50" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKl-cw-4Eo">
-                                        <rect key="frame" x="59" y="181" width="86" height="31"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="LOG OUT"/>
-                                        <connections>
-                                            <action selector="logout:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sz6-qL-jGo"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9w9-vJ-CiV" userLabel="close">
@@ -55,14 +46,27 @@
                                     <action selector="close:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SBQ-V5-KJV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKl-cw-4Eo" customClass="BorderedButton" customModule="Upload" customModuleProvider="target">
+                                <rect key="frame" x="164" y="548.5" width="86" height="31"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="LOG OUT"/>
+                                <connections>
+                                    <action selector="logout:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sz6-qL-jGo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="tintColor"/>
                         <constraints>
+                            <constraint firstItem="1tW-Ca-jdZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="Cjy-xb-myB"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="1tW-Ca-jdZ" secondAttribute="trailing" constant="10" id="CyJ-S9-Nnf"/>
                             <constraint firstItem="1tW-Ca-jdZ" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="EOo-Q0-4C3"/>
+                            <constraint firstItem="uKl-cw-4Eo" firstAttribute="centerX" secondItem="1tW-Ca-jdZ" secondAttribute="centerX" id="Lfv-WY-jkv"/>
                             <constraint firstItem="9w9-vJ-CiV" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="40" id="RzR-dL-6xe"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9w9-vJ-CiV" secondAttribute="trailing" id="hoz-rf-0PE"/>
                             <constraint firstItem="1tW-Ca-jdZ" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="nBH-79-NZp"/>
+                            <constraint firstItem="uKl-cw-4Eo" firstAttribute="top" secondItem="1tW-Ca-jdZ" secondAttribute="bottom" constant="50" id="sOP-RN-yFh"/>
                         </constraints>
                     </view>
                     <connections>

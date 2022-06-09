@@ -50,6 +50,10 @@ class DocumentController: UIViewController {
     }
     
     @objc func onDidReceiveData(_ notification: Notification) {
+       uploadFileToDropbox()
+    }
+    
+    func uploadFileToDropbox() {
         guard let fileName = viewModel?.item.name else {return}
         guard let fileData = viewModel?.fileData else {return}
         let client = DropboxClientsManager.authorizedClient
@@ -69,13 +73,17 @@ class DocumentController: UIViewController {
     
     @IBAction func saveTpDropbox(_ sender: Any) {
         let scopeRequest = ScopeRequest(scopeType: .user, scopes: ["account_info.read", "files.content.write"], includeGrantedScopes: false)
-        DropboxClientsManager.authorizeFromControllerV2(
-            UIApplication.shared,
-            controller: self,
-            loadingStatusDelegate: nil,
-            openURL: { (url: URL) -> Void in UIApplication.shared.openURL(url) },
-            scopeRequest: scopeRequest
-        )
+        if DropboxClientsManager.authorizedClient == nil {
+            DropboxClientsManager.authorizeFromControllerV2(
+                UIApplication.shared,
+                controller: self,
+                loadingStatusDelegate: nil,
+                openURL: { (url: URL) -> Void in UIApplication.shared.openURL(url) },
+                scopeRequest: scopeRequest
+            )
+        } else {
+            uploadFileToDropbox()
+        }
     }
     
     @IBAction func saveToGoogleDrive(_ sender: Any) {

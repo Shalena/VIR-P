@@ -21,12 +21,12 @@ class LoginViewModel: NSObject {
         if let data = KeychainHelper.shared.read(service: "push-token", account: appNameAccount), let pushToken = String(data: data, encoding: .utf8) {
             deviceToken = pushToken
         }
-        let parameters = ["email": email,
+        let parameters: [String: Any] = ["email": email,
                           "password": password,
                           "device_id": deviceId,
                           "device_token": deviceToken,
-                          "os": "iOS",
-                          "production": "false"
+                          "os": "ios",
+                          "production": false
         ]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -43,6 +43,7 @@ class LoginViewModel: NSObject {
             if let data = data  {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                        print(json)
                         if let accessToken = json["access_token"] as? String {
                             handler(.success(accessToken))
                         }

@@ -10,6 +10,7 @@
 		31EC36F26B9B26FFF14F7798 /* Pods_Upload_UploadUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96157394AAA150E83BBB1514 /* Pods_Upload_UploadUITests.framework */; };
 		544A95F595C9AA86BA376153 /* Pods_Upload.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC1EA8D99971BD3977E341E1 /* Pods_Upload.framework */; };
 		8117E2372755199D00C7EC25 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8117E2362755199D00C7EC25 /* CloudKit.framework */; };
+		811E564F284FFDE1000CE230 /* Stylebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811E564E284FFDE1000CE230 /* Stylebook.swift */; };
 		81610B3126EB7631001C7D78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81610B3026EB7631001C7D78 /* AppDelegate.swift */; };
 		81610B3326EB7631001C7D78 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81610B3226EB7631001C7D78 /* SceneDelegate.swift */; };
 		81610B3526EB7631001C7D78 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81610B3426EB7631001C7D78 /* HomeViewController.swift */; };
@@ -64,6 +65,7 @@
 		802972924293CD10BBD804BD /* Pods-Upload-UploadUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Upload-UploadUITests.release.xcconfig"; path = "Target Support Files/Pods-Upload-UploadUITests/Pods-Upload-UploadUITests.release.xcconfig"; sourceTree = "<group>"; };
 		8115BF03276B519E00DD666D /* ADAL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ADAL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8117E2362755199D00C7EC25 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		811E564E284FFDE1000CE230 /* Stylebook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stylebook.swift; sourceTree = "<group>"; };
 		8122EBF527525C83004D9C31 /* Upload.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Upload.entitlements; sourceTree = "<group>"; };
 		81610B2D26EB7631001C7D78 /* Upload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Upload.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81610B3026EB7631001C7D78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				81A03177274689E20070CAB0 /* BaseControllerDelegate.swift */,
 				81C469072785D42400FAEFFD /* KeychainHelper.swift */,
 				81C4690B2785DE8A00FAEFFD /* Builder.swift */,
+				811E564E284FFDE1000CE230 /* Stylebook.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				81610B3326EB7631001C7D78 /* SceneDelegate.swift in Sources */,
 				81C4690C2785DE8A00FAEFFD /* Builder.swift in Sources */,
 				81D12DFE284E8FEB007146C9 /* SettingsViewModel.swift in Sources */,
+				811E564F284FFDE1000CE230 /* Stylebook.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

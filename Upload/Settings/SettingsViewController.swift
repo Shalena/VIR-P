@@ -26,7 +26,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func logout(_ sender: Any) {
         viewModel.logout()
-        presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        view.window!.rootViewController?.dismiss(animated: false, completion: nil)
     }
 }
     
