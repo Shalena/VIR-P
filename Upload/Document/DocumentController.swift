@@ -60,6 +60,7 @@ class DocumentController: UIViewController {
         _ = client?.files.upload(path: "/" + fileName, input: fileData)
             .response { [self] response, error in
                 if response != nil {
+                    viewModel?.markAsDownloaded()
                     self.showAlert(message: "Uploaded successfully, please check your Dropbox")
                   //  self.twoOptionCancelAlert(message: "Do you want to save Dropbox as preffered Cloud Store?", actionTitle: "Save")
                 } else if let error = error {
@@ -98,6 +99,7 @@ class DocumentController: UIViewController {
                 if let fileName = viewModel?.item.name {
                    let url = driveURL.appendingPathComponent(fileName)
                    try viewModel?.fileData?.write(to: url)
+                   viewModel?.markAsDownloaded()
                    showAlert(message: "Uploaded successfully, please check your iCloud store")
                 }
             } else {
@@ -124,6 +126,7 @@ class DocumentController: UIViewController {
         let uploadBlock = {
             self.upload((self.uploadFolderID!), name: (self.viewModel?.item.name)!, data: (self.viewModel?.fileData)!, MIMEType: "image/png") { string, error in
                     if string != nil {
+                        viewModel?.markAsDownloaded()
                         self.showAlert(message: "Uploaded successfully, please check your Google Drive")
                     } else if error != nil {
                         self.showAlert(message: error!.localizedDescription)

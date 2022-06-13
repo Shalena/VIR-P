@@ -22,9 +22,22 @@ class DownloadItemCell: UITableViewCell {
             let text = "Id: " + String(id)  + "   " + name
             title.text = text
         }
+        if let exported = item.exported, exported.boolValue == true {
+            markAsDowloaded()
+        } else {
+            markAsNotExported()
+        }
     }
     
     func markAsDowloaded() {
         title.textColor = .gray
     }
+    
+    func markAsNotExported() {
+        title.textColor = .black
+    }
+}
+
+extension Int {
+    var boolValue: Bool { return self != 0 }
 }

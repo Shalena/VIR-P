@@ -20,6 +20,11 @@ class DownloadController: UIViewController {
         viewModel.downloadItems()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.downloadItems()
+    }
+    
     @IBAction func settingsPressed(_ sender: Any) {
         let settingsController = Builder.shared.buildSettings()
         show(settingsController, sender: self)

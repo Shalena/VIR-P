@@ -10,6 +10,7 @@ import Foundation
 struct DownloadItem: Codable {
     var name: String?
     var id: Int?
+    var exported: Int?
 }
 
 struct DownloadItemWrap: Codable {
